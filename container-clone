@@ -1,0 +1,26 @@
+#!/bin/bash
+
+declare -A repos_to_clone
+repos_to_clone[hastebin]="arminfriedl/hastebin"
+
+set -x
+set -e
+cmd=$1
+
+if [[ x"$cmd" != xpull && x"$cmd" != xdeploy ]]; then
+	echo "Unknown cmd $cmd"
+	exit 1
+fi
+
+for repo in "${!repos_to_clone[@]}"
+do
+	remote_repo="${repos_to_clone[$repo]}"
+	if [ "$cmd" == "pull" ]; then
+		docker pull $remote_repo
+		docker tag $remote_repo $repo
+	fi
+	if [ "$cmd" == "deploy" ]; then
+		docker tag ${repo} ${REPO}${repo}
+		docker push ${REPO}${repo}
+	fi
+done
