@@ -21,6 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
+    permissions:
+      packages: write
+
     steps:
       - uses: actions/checkout@v2
 
