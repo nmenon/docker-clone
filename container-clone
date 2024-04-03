@@ -2,7 +2,7 @@
 
 declare -A repos_to_clone
 repos_to_clone[hastebin]="arminfriedl/hastebin"
-repos_to_clone[u-boot-gitlab-ci-runner]="trini/u-boot-gitlab-ci-runner:jammy-20240227-14Mar2024"
+repos_to_clone[u-boot-gitlab-ci-runner]="trini/u-boot-gitlab-ci-runner"
 
 set -x
 set -e
